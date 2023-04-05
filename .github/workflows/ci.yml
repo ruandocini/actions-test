@@ -1,6 +1,5 @@
 name: Demo
 on: issue_comment
-  - types: [created]
 
 jobs:
   label-pr:
