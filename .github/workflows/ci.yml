@@ -1,0 +1,22 @@
+name: Demo
+on: issue_comment
+  - types: [created]
+
+jobs:
+  label-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: listen for PR Comments
+        uses: machine-learning-apps/actions-chatops@master
+        with:
+          APP_PEM: ${{ secrets.APP_PEM }}
+          APP_ID: ${{ secrets.APP_ID }}
+          TRIGGER_PHRASE: "/test-trigger-comment"
+          INDICATOR_LABEL: "test-label"
+        env: # you must supply GITHUB_TOKEN
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        id: prcomm
+        # This step clones the branch of the PR associated with the triggering phrase, but only if it is triggered.
+      - name: Print comment
+        run: |
+          echo ${{ github.event.comment.body }}
