@@ -6,6 +6,7 @@ from generator.alerts_integration import AlertsIntegration
 from airflow.models import Variable
             
 training_config = "models/dummy_model/dummy_model.json"
+branch = "feature/training"
 nr_integration = NewRelicIntegration()
 alert = AlertsIntegration("both")
 
@@ -48,7 +49,7 @@ execute_forecast = DagWrapper.create_base_pod_operator(
     namespace="data-platform",
     version="base-v0.0.3",
     repository="science",
-    branch="main",
+    branch=f'{branch_name}',
     workdir="models/",
     service_account_name="airflow",
     main_file="training/training.py",
