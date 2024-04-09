@@ -6,7 +6,7 @@ from generator.alerts_integration import AlertsIntegration
 from airflow.models import Variable
             
 training_config = "models/dummy_model/dummy_model.json"
-branch = "feature/training"
+branch_name = "feature/training"
 nr_integration = NewRelicIntegration()
 alert = AlertsIntegration("both")
 
