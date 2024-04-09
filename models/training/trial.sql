@@ -1,1 +1,1 @@
-SELECT * FROM something
+SELECT * FROM novaTentativa
